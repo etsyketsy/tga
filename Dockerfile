@@ -18,23 +18,24 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-RUN mkdir -p /app | \
+RUN mkdir -p /backend | \
+    mkdir -p /frontend | \
+    mkdir -p /scripts && \
     mkdir -p /media-files | \
     mkdir -p /static-files
 
-COPY ./app/requirements.yml /app/requirements.yml
-RUN /opt/conda/bin/conda env create -f /app/requirements.yml
+RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
 
 ENV PATH /opt/conda/envs/app/bin:$PATH
 RUN sed '$ a conda activate app' -i /root/.bashrc
 
 
-COPY ./app /app
+COPY ./backend /backend
 
 COPY ./scripts/* /scripts/
 RUN chmod +x /scripts/*
 
-WORKDIR /app
+WORKDIR /backend
 
 EXPOSE 8000
 EXPOSE 22
