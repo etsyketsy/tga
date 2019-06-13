@@ -1,0 +1,25 @@
+version: '3'
+services:
+  database:
+    image: postgres:9.6.1
+    env_file: dev.env
+    volumes:
+      - database:/var/lib/postgresql/data
+
+  app:
+    image: etsyketsy/tg-acct:latest
+    command: "/usr/sbin/sshd -D"
+    env_file: dev.env
+    ports:
+      - "49176:22"
+      - "8080:8000"
+    volumes:
+      - ./media-files:/media-files
+      - ./static-files:/static-files
+      - ./app:/app
+      - ./scripts:/scripts
+    depends_on:
+      - database
+
+volumes:
+  database:
