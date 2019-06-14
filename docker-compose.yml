@@ -6,7 +6,7 @@ services:
     volumes:
       - database:/var/lib/postgresql/data
 
-  app:
+  backend:
     image: etsyketsy/tg-acct:latest
     command: "/usr/sbin/sshd -D"
     env_file: dev.env
@@ -16,7 +16,7 @@ services:
     volumes:
       - ./media-files:/media-files
       - ./static-files:/static-files
-      - ./app:/app
+      - ./backend:/backend
       - ./scripts:/scripts
     depends_on:
       - database
