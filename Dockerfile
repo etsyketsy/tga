@@ -20,9 +20,11 @@ RUN echo "export VISIBLE=now" >> /etc/profile
 
 RUN mkdir -p /backend | \
     mkdir -p /frontend | \
-    mkdir -p /scripts && \
+    mkdir -p /scripts | \
     mkdir -p /media-files | \
     mkdir -p /static-files
+
+COPY ./backend/requirements.yml /backend/requirements.yml
 
 RUN /opt/conda/bin/conda env create -f /backend/requirements.yml
 
