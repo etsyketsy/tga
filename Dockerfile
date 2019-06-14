@@ -6,7 +6,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -qqy \
     wget \
     bzip2 \
     libssl-dev \
-    openssh-server
+    openssh-server \
+ && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /var/run/sshd
 RUN echo 'root:screencast' | chpasswd

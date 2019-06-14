@@ -7,7 +7,7 @@ services:
       - database:/var/lib/postgresql/data
 
   backend:
-    image: etsyketsy/tg-acct:latest
+    image: etsyketsy/tga:latest
     command: "/usr/sbin/sshd -D"
     env_file: dev.env
     ports:
