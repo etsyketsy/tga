@@ -1,3 +1,16 @@
-# tga models
+# TG-A
 
-![picture](./media-files/Models_v1.png)
+## What is it?
+
+## Why?
+
+## How does it work?
+
+## Features
+
+ ## Next steps
+
+## Technology
+
+## Database Schema/Models
+![](assets/Models.png)
